@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-require "./lib/components/board"
+require "./lib/components/game"
 
-Board.new
+Game.new
