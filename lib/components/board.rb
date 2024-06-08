@@ -2,12 +2,12 @@
 
 require "colorize"
 
-require "./lib/components/pieces/rook"
-require "./lib/components/pieces/knight"
-require "./lib/components/pieces/bishop"
-require "./lib/components/pieces/queen"
-require "./lib/components/pieces/king"
-require "./lib/components/pieces/pawn"
+require_relative "pieces/rook"
+require_relative "pieces/knight"
+require_relative "pieces/bishop"
+require_relative "pieces/queen"
+require_relative "pieces/king"
+require_relative "pieces/pawn"
 
 class Board
   PIECES = {

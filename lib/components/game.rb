@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require "./lib/components/board"
+require_relative "board"
 
 class Game
   attr_reader :turn, :turn_count
