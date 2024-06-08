@@ -14,22 +14,21 @@ class Board
   private
 
   def generate_board
-    print "   "
-    ("A".."H").each do |l|
-      print " #{l} "
-    end
-    print "   "
-    print "\n"
+    self.generate_files_legend
     (1..8).each do |n|
       background = n.odd? ? :grey : :white
-      print " #{n} "
+      print " #{n} " # rank legend left
       ("a".."h").each do
         print "   ".colorize(background:)
         background = background == :grey ? :white : :grey
       end
-      print " #{n} "
+      print " #{n} " # rank legend right
       print "\n"
     end
+    self.generate_files_legend
+  end
+
+  def generate_files_legend
     print "   "
     ("A".."H").each do |l|
       print " #{l} "
@@ -38,5 +37,3 @@ class Board
     print "\n"
   end
 end
-
-Board.new
