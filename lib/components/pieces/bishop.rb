@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
+require "colorize"
+
 class Bishop
   def initialize(color)
-    color == :white ? "\u2657" : "\u265D"
+    @color = color
+  end
+
+  def render
+    piece = @color == :white ? "♗" : "♝"
+    piece.colorize(@color)
   end
 end

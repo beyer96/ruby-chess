@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
+require "colorize"
+
 class Rook
   def initialize(color)
-    color == :white ? "\u2656" : "\u265C"
+    @color = color
+  end
+
+  def render
+    piece = @color == :white ? "♖" : "♜"
+    piece.colorize(@color)
   end
 end

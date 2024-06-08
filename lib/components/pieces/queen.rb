@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
+require "colorize"
+
 class Queen
   def initialize(color)
-    color == :white ? "\u2655" : "\u265B"
+    @color = color
+  end
+
+  def render
+    piece = @color == :white ? "♕" : "♛"
+    piece.colorize(@color)
   end
 end

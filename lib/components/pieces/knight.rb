@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
+require "colorize"
+
 class Knight
   def initialize(color)
-    color == :white ? "\u2658" : "\u265E"
+    @color = color
+  end
+
+  def render
+    piece = @color == :white ? "♘" : "♞"
+    piece.colorize(@color)
   end
 end

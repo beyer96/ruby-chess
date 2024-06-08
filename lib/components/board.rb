@@ -2,9 +2,31 @@
 
 require "colorize"
 
+require "./lib/components/pieces/rook"
+require "./lib/components/pieces/knight"
+require "./lib/components/pieces/bishop"
+require "./lib/components/pieces/queen"
+require "./lib/components/pieces/king"
+require "./lib/components/pieces/pawn"
+
 class Board
-  def initialize
-    self.generate_board
+  PIECES = {
+    black_rook: Rook.new(:black),
+    black_knight: Knight.new(:black),
+    black_bishop: Bishop.new(:black),
+    black_queen: Queen.new(:black),
+    black_king: King.new(:black),
+    black_pawn: Pawn.new(:black),
+    white_rook: Rook.new(:white),
+    white_knight: Knight.new(:white),
+    white_bishop: Bishop.new(:white),
+    white_queen: Queen.new(:white),
+    white_king: King.new(:white),
+    white_pawn: Pawn.new(:white),
+  }
+
+  def initialize(position)
+    self.generate_board(position)
   end
 
   def render
@@ -13,16 +35,18 @@ class Board
 
   private
 
-  def generate_board
+  def generate_board(position)
     self.generate_files_legend
-    (1..8).each do |n|
-      background = n.odd? ? :grey : :white
-      print " #{n} " # rank legend left
-      ("a".."h").each do
-        print "   ".colorize(background:)
-        background = background == :grey ? :white : :grey
+    position.each_with_index do |rank, i| # iterates ranks from 8 to 1
+      i = i + 1
+      background = i.even? ? :light_green : :white
+      print " #{9 - i} " # rank legend left
+      rank.each do |field|
+        field_content = field.nil? ? " " : PIECES[field].render
+        print " #{field_content} ".colorize(background:)
+        background = background == :light_green ? :white : :light_green
       end
-      print " #{n} " # rank legend right
+      print " #{9 - i} " # rank legend right
       print "\n"
     end
     self.generate_files_legend
