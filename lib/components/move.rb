@@ -14,7 +14,5 @@ class Move
     @move = move
   end
 
-  def 
-
   # def can_move?
 end
