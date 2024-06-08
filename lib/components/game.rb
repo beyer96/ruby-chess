@@ -6,7 +6,7 @@ class Game
   attr_reader :turn, :turn_count
 
   def initialize
-    @turn = "White"
+    @turn = :white
     @board = Board.new(current_position)
   end
 

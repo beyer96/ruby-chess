@@ -8,6 +8,6 @@ describe "game" do
   it "should create instance of new game" do
     game = Game.new
 
-    expect(game.turn).to eql("White")
+    expect(game.turn).to eql(:white)
   end
 end
