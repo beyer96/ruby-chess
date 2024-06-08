@@ -33,7 +33,7 @@ class Move
   end
 
   def is_valid_move?
-    @move.match? /^([KQRBN])?([a-h])([1-8])/
+    @move.match? /^([KQRBN])?([a-h])([1-8])|^(O-O(-O)?)$/
   end
 
   def invalid_move_error
