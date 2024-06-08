@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require_relative "board"
+require_relative "move"
 
 class Game
   attr_reader :turn, :turn_count
@@ -8,6 +9,7 @@ class Game
   def initialize
     @turn = :white
     @board = Board.new(current_position)
+    Move.new(@turn)
   end
 
   def current_position
