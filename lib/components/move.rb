@@ -13,30 +13,24 @@ FIGURES = {
 
 class Move
   def initialize(player)
-    @move
-
-    print "#{player}'s turn: "
-    self.get_move
-
-    until self.is_valid_move? do
-      self.invalid_move_error
-      self.get_move
-    end
-
-    puts @move
+    select_piece
+    get_move
   end
 
   private
 
   def get_move
     @move = gets.chomp
+
+    is_valid_move? ? @move : invalid_move_error
   end
 
   def is_valid_move?
-    @move.match? /^([KQRBN])?([a-h])([1-8])|^(O-O(-O)?)$/
+    @move.match? /^([KQRBN])?[a-h][1-8]$|^(O-O(-O)?)$/
   end
 
   def invalid_move_error
     puts "Invalid move! Try again".colorize(:red)
+    get_move
   end
 end
