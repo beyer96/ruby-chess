@@ -16,12 +16,15 @@ class Game
   def initialize
     @turn = :white
     @board = Board.new(current_position)
-    @move = Move.new(@turn)
+    
+    # @move = Move.new(@turn)
   end
 
   def current_position
     self.default_position
   end
+
+  private
 
   def default_position
     [

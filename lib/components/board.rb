@@ -2,20 +2,9 @@
 
 require "colorize"
 
-require_relative "pieces/rook"
-require_relative "pieces/knight"
-require_relative "pieces/bishop"
-require_relative "pieces/queen"
-require_relative "pieces/king"
-require_relative "pieces/pawn"
-
 class Board
   def initialize(position)
     self.generate_board(position)
-  end
-
-  def render
-
   end
 
   private
@@ -27,7 +16,7 @@ class Board
       background = i.even? ? :light_green : :white
       print " #{9 - i} " # rank legend left
       rank.each do |field|
-        field_content = field.nil? ? " " : field.render
+        field_content = has_piece?(field) ? field.render : " "
         print " #{field_content} ".colorize(background:)
         background = background == :light_green ? :white : :light_green
       end
@@ -44,5 +33,9 @@ class Board
     end
     print "   "
     print "\n"
+  end
+
+  def has_piece?(field)
+    !field.nil?
   end
 end
