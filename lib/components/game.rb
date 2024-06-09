@@ -1,5 +1,12 @@
 # frozen_string_literal: true
 
+require_relative "pieces/rook"
+require_relative "pieces/knight"
+require_relative "pieces/bishop"
+require_relative "pieces/queen"
+require_relative "pieces/king"
+require_relative "pieces/pawn"
+
 require_relative "board"
 require_relative "move"
 
@@ -18,14 +25,14 @@ class Game
 
   def default_position
     [
-      [:black_rook, :black_knight, :black_bishop, :black_queen, :black_king, :black_bishop, :black_knight, :black_rook],
-      Array.new(8, :black_pawn),
+      [Rook.new(:black), Knight.new(:black), Bishop.new(:black), Queen.new(:black), King.new(:black), Bishop.new(:black), Knight.new(:black), Rook.new(:black)],
+      Array.new(8, Pawn.new(:black)),
       Array.new(8),
       Array.new(8),
       Array.new(8),
       Array.new(8),
-      Array.new(8, :white_pawn),
-      [:white_rook, :white_knight, :white_bishop, :white_queen, :white_king, :white_bishop, :white_knight, :white_rook],
+      Array.new(8, Pawn.new(:white)),
+      [Rook.new(:white), Knight.new(:white), Bishop.new(:white), Queen.new(:white), King.new(:white), Bishop.new(:white), Knight.new(:white), Rook.new(:white)],
     ]
   end
 end

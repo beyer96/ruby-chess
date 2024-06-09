@@ -10,21 +10,6 @@ require_relative "pieces/king"
 require_relative "pieces/pawn"
 
 class Board
-  PIECES = {
-    black_rook: Rook.new(:black),
-    black_knight: Knight.new(:black),
-    black_bishop: Bishop.new(:black),
-    black_queen: Queen.new(:black),
-    black_king: King.new(:black),
-    black_pawn: Pawn.new(:black),
-    white_rook: Rook.new(:white),
-    white_knight: Knight.new(:white),
-    white_bishop: Bishop.new(:white),
-    white_queen: Queen.new(:white),
-    white_king: King.new(:white),
-    white_pawn: Pawn.new(:white),
-  }
-
   def initialize(position)
     self.generate_board(position)
   end
@@ -42,7 +27,7 @@ class Board
       background = i.even? ? :light_green : :white
       print " #{9 - i} " # rank legend left
       rank.each do |field|
-        field_content = field.nil? ? " " : PIECES[field].render
+        field_content = field.nil? ? " " : field.render
         print " #{field_content} ".colorize(background:)
         background = background == :light_green ? :white : :light_green
       end
